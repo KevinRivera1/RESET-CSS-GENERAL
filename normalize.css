@@ -136,3 +136,14 @@ q:after {
     content: "";
     content: none;
 }
+
+/* Este bloque de código CSS configura el estilo del texto seleccionado en una página web. */
+::-moz-selection {
+    background-color: var(--negro);
+    color           : var(--blanco);
+}
+
+::selection {
+    background-color: var(--negro);
+    color           : var(--blanco);
+}
