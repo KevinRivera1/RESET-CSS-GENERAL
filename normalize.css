@@ -16,3 +16,10 @@ utilizando variables CSS. */
     --tipo-principal : Helvetica, Arial, sans-serif;
     --tipo-secundaria: Verdana;
 }
+
+/* modo oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --negro: #ececec;
+    }
+}
