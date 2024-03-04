@@ -35,3 +35,14 @@ configuración del navegador. */
         transition        : none !important;
     }
 }
+
+/* Este fragmento de código CSS es un restablecimiento de CSS que apunta a todos los elementos de la
+página utilizando el selector universal `*`. Esto es lo que hace cada propiedad: */
+* {
+    margin            : 0;
+    padding           : 0;
+    border            : 0;
+    -webkit-box-sizing: border-box;
+    box-sizing        : border-box;
+    vertical-align    : baseline;
+}
