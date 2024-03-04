@@ -167,3 +167,11 @@ label {
     -moz-appearance   : none;
     appearance        : none;
 }
+
+/* Este bloque de código CSS restablece los estilos de las tablas y sus elementos relacionados. */
+table,
+tr,
+td {
+    border-collapse: collapse;
+    border-spacing : 0;
+}
