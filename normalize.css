@@ -71,3 +71,13 @@ a {
     color          : inherit;
     font-size      : inherit;
 }
+
+/* La regla CSS `pa { display: inline; }` apunta a <a>elementos ancla ` ` que están anidados dentro de
+` <p>` elementos. Está configurando la propiedad de visualización de estos elementos de anclaje en
+&quot;en línea&quot;, lo que significa que se mostrarán en línea con el texto circundante en lugar
+de como elementos a nivel de bloque. Esta regla anula el comportamiento de visualización
+predeterminado a nivel de bloque de los elementos ancla dentro de los párrafos, lo que les permite
+fluir en línea con el contenido del texto del párrafo.</p></a> */
+p a {
+    display: inline;
+}
