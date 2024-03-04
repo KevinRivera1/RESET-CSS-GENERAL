@@ -183,3 +183,19 @@ svg {
     display: block;
     fill   : currentColor;
 }
+
+/* El bloque de código que proporcionó está configurando la tipografía para todo el sitio web. Esto es
+lo que hace cada propiedad: */
+body {
+    min-height             : 100vh;
+    font-size              : 100%;
+    font-family            : var(--tipo-principal);
+    color                  : var(--negro);
+    line-height            : 1.4em;
+    -webkit-hyphens        : auto;
+    -ms-hyphens            : auto;
+    hyphens                : auto;
+    font-smooth            : always;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
