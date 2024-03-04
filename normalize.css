@@ -175,3 +175,11 @@ td {
     border-collapse: collapse;
     border-spacing : 0;
 }
+
+/* Este bloque de código CSS aborda problemas relacionados con elementos SVG (gráficos vectoriales
+escalables). Esto es lo que hace cada propiedad: */
+svg {
+    width  : 100%;
+    display: block;
+    fill   : currentColor;
+}
