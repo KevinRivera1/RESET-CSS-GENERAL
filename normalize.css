@@ -90,3 +90,12 @@ marcador de lista predeterminado. */
 li {
     list-style-type: none;
 }
+
+/* El código CSS `html { comportamiento de desplazamiento: suave; }` está configurando un
+comportamiento de desplazamiento suave para el elemento HTML. Esto significa que cuando un usuario
+hace clic en un enlace ancla dentro de la página, el navegador se desplazará suavemente hasta la
+ubicación de destino en lugar de saltar directamente a ella. Esto proporciona una experiencia más
+agradable a la vista y fácil de usar al navegar por el contenido de una página web. */
+html {
+    scroll-behavior: smooth;
+}
