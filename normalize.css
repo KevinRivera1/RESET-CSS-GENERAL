@@ -46,3 +46,19 @@ página utilizando el selector universal `*`. Esto es lo que hace cada propiedad
     box-sizing        : border-box;
     vertical-align    : baseline;
 }
+
+/* Este bloque de código CSS establece estilos para varios tipos de elementos multimedia como imágenes,
+fotografías, vídeos, iframes y figuras. Esto es lo que hace cada propiedad: */
+img,
+picture,
+video,
+iframe,
+figure {
+    max-width         : 100%;
+    width             : 100%;
+    display           : block;
+    -o-object-fit     : cover;
+    object-fit        : cover;
+    -o-object-position: center center;
+    object-position   : center center;
+}
