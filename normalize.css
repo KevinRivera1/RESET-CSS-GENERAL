@@ -127,3 +127,12 @@ em {
     text-decoration: none;
     color          : inherit;
 }
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
