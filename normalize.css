@@ -6,3 +6,13 @@
     👉 Problemas con tipografías y etiquetas input en formularios
     👉 Unificar la tipografía de todas las etiquetas de una web
 */
+
+
+/* El selector `:root` en CSS se utiliza para apuntar al elemento raíz del documento, que normalmente
+es el `:root`.<html> `elemento. En este contexto, se trata de establecer propiedades personalizadas
+utilizando variables CSS. */
+:root {
+    --negro          : #393939;
+    --tipo-principal : Helvetica, Arial, sans-serif;
+    --tipo-secundaria: Verdana;
+}
