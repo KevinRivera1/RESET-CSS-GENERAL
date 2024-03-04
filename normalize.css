@@ -62,3 +62,12 @@ figure {
     -o-object-position: center center;
     object-position   : center center;
 }
+
+/* Reseteamos los enlaces para funcionar como cajas. El código CSS `a { display: block; decoración de texto: ninguna; color: heredar; tamaño de fuente:
+heredar; }` está diseñando <a>elementos de anclaje ` `. Esto es lo que hace cada propiedad:</a> */
+a {
+    display        : block;
+    text-decoration: none;
+    color          : inherit;
+    font-size      : inherit;
+}
