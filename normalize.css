@@ -81,3 +81,12 @@ fluir en línea con el contenido del texto del párrafo.</p></a> */
 p a {
     display: inline;
 }
+
+/* El código CSS `li {list-style-type: none; }` está eliminando las viñetas predeterminadas de los
+elementos de la lista (`<li> `elementos). Al establecer &quot;tipo de estilo de lista&quot; en
+&quot;ninguno&quot;, se eliminan las viñetas que normalmente aparecen antes de cada elemento de la
+lista en una lista desordenada. Esto ayuda a personalizar el estilo de las listas eliminando el
+marcador de lista predeterminado. */
+li {
+    list-style-type: none;
+}
