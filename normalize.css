@@ -23,3 +23,15 @@ utilizando variables CSS. */
         --negro: #ececec;
     }
 }
+
+/* La regla `@media (prefiere-movimiento-reducido: reducir)` está dirigida a usuarios que han
+especificado una preferencia por el movimiento reducido en su sistema operativo o en la
+configuración del navegador. */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        -webkit-animation : none !important;
+        animation         : none !important;
+        -webkit-transition: none !important;
+        transition        : none !important;
+    }
+}
