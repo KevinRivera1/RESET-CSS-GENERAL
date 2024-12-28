@@ -1,201 +1,160 @@
 /*
-  Con este reset vamos a resolver:
-    👉 Unificar el uso de Custom Properties
-    👉 Problemas de box-model más generales
-    👉 Problemas con imagenes, vídeos e iconos svg
-    👉 Problemas con tipografías y etiquetas input en formularios
-    👉 Unificar la tipografía de todas las etiquetas de una web
+  Reset mejorado para sistemas escalables:
+    ✅ Solución de problemas comunes en tipografías, formularios y multimedia
+    ✅ Accesibilidad mejorada
+    ✅ Compatible con sistemas oscuros y preferencias de usuario
+    ✅ Baja especificidad para sobrescritura fácil
+    ✅ Configurado para navegadores modernos y legacy
 */
 
-
-/* El selector `:root` en CSS se utiliza para apuntar al elemento raíz del documento, que normalmente
-es el `:root`.<html> `elemento. En este contexto, se trata de establecer propiedades personalizadas
-utilizando variables CSS. */
+/* Variables globales */
 :root {
-    --negro          : #393939;
-    --tipo-principal : Helvetica, Arial, sans-serif;
-    --tipo-secundaria: Verdana;
+    --color-negro       : #393939;
+    --color-blanco      : #ffffff;
+    --tipo-principal    : Helvetica, Arial, sans-serif;
+    --tipo-secundaria   : Verdana, sans-serif;
+    --espaciado-base    : 1.4em;
+    --animacion-duracion: 0.2s;
+    --borde-foco        : 2px solid #005fcc;
+    /* Color accesible para foco */
 }
 
-/* modo oscuro */
+/* Modo oscuro */
 @media (prefers-color-scheme: dark) {
     :root {
-        --negro: #ececec;
+        --color-negro : #ececec;
+        --color-blanco: #1a1a1a;
     }
 }
 
-/* La regla `@media (prefiere-movimiento-reducido: reducir)` está dirigida a usuarios que han
-especificado una preferencia por el movimiento reducido en su sistema operativo o en la
-configuración del navegador. */
+/* Reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
-    * {
-        -webkit-animation : none !important;
-        animation         : none !important;
-        -webkit-transition: none !important;
-        transition        : none !important;
+
+    :where(*),
+    :where(*::before),
+    :where(*::after) {
+        animation      : none !important;
+        transition     : none !important;
+        scroll-behavior: auto !important;
     }
 }
 
-/* Este fragmento de código CSS es un restablecimiento de CSS que apunta a todos los elementos de la
-página utilizando el selector universal `*`. Esto es lo que hace cada propiedad: */
-* {
-    margin            : 0;
-    padding           : 0;
-    border            : 0;
-    -webkit-box-sizing: border-box;
-    box-sizing        : border-box;
-    vertical-align    : baseline;
+/* Reset general */
+:where(*) {
+    margin        : 0;
+    padding       : 0;
+    border        : 0;
+    box-sizing    : border-box;
+    vertical-align: baseline;
 }
 
-/* Este bloque de código CSS establece estilos para varios tipos de elementos multimedia como imágenes,
-fotografías, vídeos, iframes y figuras. Esto es lo que hace cada propiedad: */
-img,
-picture,
-video,
-iframe,
-figure {
-    max-width         : 100%;
-    width             : 100%;
-    display           : block;
-    -o-object-fit     : cover;
-    object-fit        : cover;
-    -o-object-position: center center;
-    object-position   : center center;
-}
-
-/* Reseteamos los enlaces para funcionar como cajas. El código CSS `a { display: block; decoración de texto: ninguna; color: heredar; tamaño de fuente:
-heredar; }` está diseñando <a>elementos de anclaje ` `. Esto es lo que hace cada propiedad:</a> */
-a {
-    display        : block;
-    text-decoration: none;
-    color          : inherit;
-    font-size      : inherit;
-}
-
-/* La regla CSS `pa { display: inline; }` apunta a <a>elementos ancla ` ` que están anidados dentro de
-` <p>` elementos. Está configurando la propiedad de visualización de estos elementos de anclaje en
-&quot;en línea&quot;, lo que significa que se mostrarán en línea con el texto circundante en lugar
-de como elementos a nivel de bloque. Esta regla anula el comportamiento de visualización
-predeterminado a nivel de bloque de los elementos ancla dentro de los párrafos, lo que les permite
-fluir en línea con el contenido del texto del párrafo.</p></a> */
-p a {
-    display: inline;
-}
-
-/* El código CSS `li {list-style-type: none; }` está eliminando las viñetas predeterminadas de los
-elementos de la lista (`<li> `elementos). Al establecer &quot;tipo de estilo de lista&quot; en
-&quot;ninguno&quot;, se eliminan las viñetas que normalmente aparecen antes de cada elemento de la
-lista en una lista desordenada. Esto ayuda a personalizar el estilo de las listas eliminando el
-marcador de lista predeterminado. */
-li {
-    list-style-type: none;
-}
-
-/* El código CSS `html { comportamiento de desplazamiento: suave; }` está configurando un
-comportamiento de desplazamiento suave para el elemento HTML. Esto significa que cuando un usuario
-hace clic en un enlace ancla dentro de la página, el navegador se desplazará suavemente hasta la
-ubicación de destino en lugar de saltar directamente a ella. Esto proporciona una experiencia más
-agradable a la vista y fácil de usar al navegar por el contenido de una página web. */
-html {
+/* Tipografía base */
+:where(html) {
+    font-size      : 100%;
+    line-height    : var(--espaciado-base);
     scroll-behavior: smooth;
+    /* Navegadores modernos */
 }
 
+:where(body) {
+    min-height             : 100vh;
+    font-family            : var(--tipo-principal);
+    font-size              : 1rem;
+    color                  : var(--color-negro);
+    background-color       : var(--color-blanco);
+    line-height            : var(--espaciado-base);
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    hyphens                : auto;
+}
 
-/* Este bloque de código CSS restablece los estilos predeterminados para varios elementos HTML
-relacionados con texto. Establece las siguientes propiedades para elementos como encabezados (`h1` a
-`h6`), párrafos (`p`), tramos (`span`), enlaces de anclaje (`a`), elementos fuertes (`strong`),
-citas en bloque. (`blockquote`), elementos en cursiva (`i`), elementos en negrita (`b`), elementos
-subrayados (`u`) y elementos enfatizados (`em`): */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-a,
-strong,
-blockquote,
-i,
-b,
-u,
-em {
-    font-size      : 1em;
-    font-weight    : inherit;
-    font-style     : inherit;
+/* Imágenes y multimedia */
+:where(img, picture, video, iframe, figure) {
+    max-width      : 100%;
+    height         : auto;
+    display        : block;
+    object-fit     : cover;
+    object-position: center;
+}
+
+/* Enlaces */
+:where(a) {
     text-decoration: none;
     color          : inherit;
+    transition     : color var(--animacion-duracion) ease-in-out;
 }
 
-/* Evitamos problemas con los pseudoelementos de quotes */
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: "";
-    content: none;
+:where(a:hover, a:focus) {
+    text-decoration: underline;
+    outline        : none;
+    /* Navegadores modernos */
 }
 
-/* Este bloque de código CSS configura el estilo del texto seleccionado en una página web. */
-::-moz-selection {
-    background-color: var(--negro);
-    color           : var(--blanco);
+/* Elementos de lista */
+:where(ul, ol) {
+    list-style-position: inside;
+    margin             : 0;
+    padding-left       : 1.5rem;
 }
 
-::selection {
-    background-color: var(--negro);
-    color           : var(--blanco);
+:where(li) {
+    list-style-type: none;
+    /* Base genérica */
 }
 
-/* Nivelamos problemas de tipografías y colocación de formularios */
-form,
-input,
-textarea,
-select,
-button,
-label {
-    font-family       : inherit;
-    font-size         : inherit;
-    -webkit-hyphens   : auto;
-    -ms-hyphens       : auto;
-    hyphens           : auto;
-    background-color  : transparent;
-    color             : inherit;
-    display           : block;
-    -webkit-appearance: none;
-    -moz-appearance   : none;
-    appearance        : none;
+/* Botones y elementos interactivos */
+:where(button, [type="button"], [type="submit"], [role="button"]) {
+    font-family     : inherit;
+    font-size       : inherit;
+    background-color: transparent;
+    color           : inherit;
+    border          : none;
+    cursor          : pointer;
+    transition      : background-color var(--animacion-duracion) ease-in-out;
 }
 
-/* Este bloque de código CSS restablece los estilos de las tablas y sus elementos relacionados. */
-table,
-tr,
-td {
+:where(button:focus, [type="button"]:focus, [type="submit"]:focus, [role="button"]:focus) {
+    outline: var(--borde-foco);
+}
+
+/* Formularios */
+:where(form, input, textarea, select, button, label) {
+    font-family     : inherit;
+    font-size       : inherit;
+    color           : inherit;
+    background-color: transparent;
+    border          : none;
+    display         : block;
+    appearance      : none;
+    hyphens         : auto;
+}
+
+/* Tablas */
+:where(table) {
+    width          : 100%;
     border-collapse: collapse;
-    border-spacing : 0;
 }
 
-/* Este bloque de código CSS aborda problemas relacionados con elementos SVG (gráficos vectoriales
-escalables). Esto es lo que hace cada propiedad: */
-svg {
+:where(th, td) {
+    padding   : 0.5rem;
+    text-align: left;
+}
+
+/* SVG */
+:where(svg) {
     width  : 100%;
+    height : auto;
     display: block;
     fill   : currentColor;
 }
 
-/* El bloque de código que proporcionó está configurando la tipografía para todo el sitio web. Esto es
-lo que hace cada propiedad: */
-body {
-    min-height             : 100vh;
-    font-size              : 100%;
-    font-family            : var(--tipo-principal);
-    color                  : var(--negro);
-    line-height            : 1.4em;
-    -webkit-hyphens        : auto;
-    -ms-hyphens            : auto;
-    hyphens                : auto;
-    font-smooth            : always;
-    -webkit-font-smoothing : antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/* Selección de texto */
+::selection {
+    background-color: var(--color-negro);
+    color           : var(--color-blanco);
+}
+
+/* Focus visible para accesibilidad */
+:focus-visible {
+    outline: var(--borde-foco);
 }
