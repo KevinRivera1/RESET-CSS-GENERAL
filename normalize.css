@@ -13,39 +13,35 @@
     --color-blanco      : #ffffff;
     --tipo-principal    : Helvetica, Arial, sans-serif;
     --tipo-secundaria   : Verdana, sans-serif;
-    --espaciado-base    : 1.4em;
+    --espaciado-base    : 1.5;
     --animacion-duracion: 0.2s;
     --borde-foco        : 2px solid #005fcc;
-    /* Color accesible para foco */
 }
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-negro : #ececec;
-        --color-blanco: #1a1a1a;
+        --color-negro : #1a1a1a;
+        --color-blanco: #ececec;
     }
 }
 
 /* Reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
-
-    :where(*),
-    :where(*::before),
-    :where(*::after) {
-        animation      : none !important;
-        transition     : none !important;
+    :where(*, *::before, *::after) {
+        animation: none !important;
+        transition: none !important;
         scroll-behavior: auto !important;
     }
 }
 
 /* Reset general */
-:where(*) {
+:where(*, *::before, *::after) {
     margin        : 0;
     padding       : 0;
     border        : 0;
     box-sizing    : border-box;
-    vertical-align: baseline;
+    /* vertical-align: baseline; */  /* opcional */
 }
 
 /* Tipografía base */
@@ -53,7 +49,8 @@
     font-size      : 100%;
     line-height    : var(--espaciado-base);
     scroll-behavior: smooth;
-    /* Navegadores modernos */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 :where(body) {
@@ -87,7 +84,6 @@
 :where(a:hover, a:focus) {
     text-decoration: underline;
     outline        : none;
-    /* Navegadores modernos */
 }
 
 /* Elementos de lista */
@@ -99,7 +95,6 @@
 
 :where(li) {
     list-style-type: none;
-    /* Base genérica */
 }
 
 /* Botones y elementos interactivos */
@@ -118,21 +113,26 @@
 }
 
 /* Formularios */
-:where(form, input, textarea, select, button, label) {
+:where(:is(form, input, textarea, select, button, label)) {
     font-family     : inherit;
     font-size       : inherit;
     color           : inherit;
     background-color: transparent;
-    border          : none;
+    /*border          : none;*/  /* Descomentar si se desea eliminar el borde por defecto */
     display         : block;
     appearance      : none;
     hyphens         : auto;
+}
+
+:where(select) {
+    background-color: var(--color-blanco);
 }
 
 /* Tablas */
 :where(table) {
     width          : 100%;
     border-collapse: collapse;
+    border-spacing: 0;
 }
 
 :where(th, td) {
@@ -157,4 +157,10 @@
 /* Focus visible para accesibilidad */
 :focus-visible {
     outline: var(--borde-foco);
+}
+
+@supports not selector(:focus-visible) {
+    :focus {
+        outline: var(--borde-foco);
+    }
 }
