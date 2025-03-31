@@ -46,6 +46,7 @@
 
 /* Tipografía base */
 :where(html) {
+    height         : 100%;
     font-size      : 100%;
     line-height    : var(--espaciado-base);
     scroll-behavior: smooth;
